@@ -25,7 +25,22 @@
 			$max_it = 1024;
 			$px_size = 0.1;
 	
-			echo '<table cellpadding="0" cellspacing="0">';
+			if (isset($_GET['sx']))
+				$sx = $_GET['sx'];
+			if (isset($_GET['sy']))
+				$sy = $_GET['sy'];
+			if (isset($_GET['ex']))
+				$ex = $_GET['ex'];
+			if (isset($_GET['ey']))
+				$ey = $_GET['ey'];
+			if (isset($_GET['max_it']))
+				$max_it = $_GET['max_it'];
+			if (isset($_GET['px_size']) && $_GET['px_size'] > 0)
+				$px_size = $_GET['px_size'];
+			
+	
+			echo '<table cellpadding="0" cellspacing="0">
+';
 			
 			for ($y = $sy; $y <= $ey; $y += $px_size)
 			{
