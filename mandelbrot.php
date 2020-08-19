@@ -51,10 +51,11 @@
 						$it += 1;
 					}
 					
-					$a = 0.1;
-					$r = 0.5 * sin($a * $it) + 0.5;
-					$g = 0.5 * sin($a * $it + 2.094) + 0.5;
-					$b = 0.5 * sin($a * $it + 4.188) + 0.5;
+					$k = 0.1;
+					$sin_effect = 0.5
+					$r = $sin_effect * sin($k * $it) + (1 - $sin_effect);
+					$g = $sin_effect * sin($k * $it + 2) + (1 - $sin_effect);
+					$b = $sin_effect * sin($k * $it + 4) + (1 - $sin_effect);
 					
 					$col = generate_color_string($r, $g, $b);
 					
