@@ -83,7 +83,7 @@
 						$it += 1;
 					}
 					
-					$col = generate_color_2($it, $max_it);
+					$col = generate_color($it, $max_it);
 					
 					echo "<td bgcolor=" . $col . ' style="color:#' . $col . '">';
 					
