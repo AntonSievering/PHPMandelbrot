@@ -52,7 +52,7 @@
 					}
 					
 					$k = 0.1;
-					$sin_effect = 0.5
+					$sin_effect = 0.5;
 					$r = $sin_effect * sin($k * $it) + (1 - $sin_effect);
 					$g = $sin_effect * sin($k * $it + 2) + (1 - $sin_effect);
 					$b = $sin_effect * sin($k * $it + 4) + (1 - $sin_effect);
