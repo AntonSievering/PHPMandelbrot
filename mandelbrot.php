@@ -12,9 +12,31 @@
 				else return "0" . $v;
 			}
 		
-			function generate_color($r, $g, $b)
+			function generate_color($it, $max_it)
 			{
+				$k = 0.1;
+				$sin_effect = 0.5;
+				$r = $sin_effect * sin($k * $it) + (1.0 - $sin_effect);
+				$g = $sin_effect * sin($k * $it + 2 / 3 * pi()) + (1.0 - $sin_effect);
+				$b = $sin_effect * sin($k * $it + 4 / 3 * pi()) + (1.0 - $sin_effect);
+					
+				$r = round(255 * $r, 0);
+				$g = round(255 * $g, 0);
+				$b = round(255 * $b, 0);
+					
+				$r = max($r, 0);
+				$g = max($g, 0);
+				$b = max($b, 0);
+				
 				return padd_color(dechex($r)) . padd_color(dechex($g)) . padd_color(dechex($b));
+			}
+			
+			function generate_color_2($it, $max_it)
+			{
+				$v = $it / $max_it;
+				$v = 255 - round(255 * $v, 0);
+				$p = padd_color(dechex($v));
+				return $p . $p . $p;
 			}
 		
 			$sx = -3;
@@ -61,21 +83,7 @@
 						$it += 1;
 					}
 					
-					$k = 0.1;
-					$sin_effect = 0.5;
-					$r = $sin_effect * sin($k * $it) + (1.0 - $sin_effect);
-					$g = $sin_effect * sin($k * $it + 2) + (1.0 - $sin_effect);
-					$b = $sin_effect * sin($k * $it + 4) + (1.0 - $sin_effect);
-					
-					$r = round(255 * $r, 0);
-					$g = round(255 * $g, 0);
-					$b = round(255 * $b, 0);
-					
-					$r = max($r, 0);
-					$g = max($g, 0);
-					$b = max($b, 0);
-					
-					$col = generate_color($r, $g, $b);
+					$col = generate_color_2($it, $max_it);
 					
 					echo "<td bgcolor=" . $col . ' style="color:#' . $col . '">';
 					
