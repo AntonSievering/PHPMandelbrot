@@ -40,12 +40,12 @@
 			}
 		
 			$sx = -3;
-			$sy = -1;
-			$ex = 2;
-			$ey = 1;
+			$ex =  2;
+			$sy = -2;
+			$ey =  2;
 			
 			$max_it = 1024;
-			$px_size = 0.1;
+			$px_size = 0.05;
 	
 			if (isset($_GET['sx']))
 				$sx = $_GET['sx'];
