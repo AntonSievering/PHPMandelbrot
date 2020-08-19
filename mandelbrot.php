@@ -14,12 +14,7 @@
 		
 			function generate_color($r, $g, $b)
 			{
-				return padd_color(dechex(255 * $r)) . padd_color(dechex(255 * $g)) . padd_color(dechex(255 * $b));
-			}
-		
-			function generate_color_string($r, $g, $b)
-			{
-				return '"#' . generate_color($r, $g, $b) . '"';
+				return padd_color(dechex($r)) . padd_color(dechex($g)) . padd_color(dechex($b));
 			}
 		
 			$sx = -3;
@@ -28,7 +23,7 @@
 			$ey = 1;
 			
 			$max_it = 1024;
-			$px_size = 0.02;
+			$px_size = 0.1;
 	
 			echo '<table cellpadding="0" cellspacing="0">';
 			
@@ -53,13 +48,21 @@
 					
 					$k = 0.1;
 					$sin_effect = 0.5;
-					$r = $sin_effect * sin($k * $it) + (1 - $sin_effect);
-					$g = $sin_effect * sin($k * $it + 2) + (1 - $sin_effect);
-					$b = $sin_effect * sin($k * $it + 4) + (1 - $sin_effect);
+					$r = $sin_effect * sin($k * $it) + (1.0 - $sin_effect);
+					$g = $sin_effect * sin($k * $it + 2) + (1.0 - $sin_effect);
+					$b = $sin_effect * sin($k * $it + 4) + (1.0 - $sin_effect);
 					
-					$col = generate_color_string($r, $g, $b);
+					$r = round(255 * $r, 0);
+					$g = round(255 * $g, 0);
+					$b = round(255 * $b, 0);
 					
-					echo "<td bgcolor=" . $col . ' style="color:#' . generate_color($r, $g, $b) . '">';
+					$r = max($r, 0);
+					$g = max($g, 0);
+					$b = max($b, 0);
+					
+					$col = generate_color($r, $g, $b);
+					
+					echo "<td bgcolor=" . $col . ' style="color:#' . $col . '">';
 					
 					echo "llll</td>";
 				}
